@@ -119,3 +119,141 @@ class BankAccount:
         return self._balance
             
         
+############### COMPLETE PROJECT ############
+from abc import ABC, abstractmethod
+
+# 🔶 ABSTRACTION: Base class defining the interface
+class Animal(ABC):
+    def __init__(self, name, age, breed):
+        # 🔐 ENCAPSULATION: Private attributes
+        self.__name = name
+        self.__age = age
+        self.__breed = breed
+
+    # Getters
+    def get_name(self):
+        return self.__name
+
+    def get_age(self):
+        return self.__age
+
+    def get_breed(self):
+        return self.__breed
+
+    # Setters (with validation)
+    def set_age(self, age):
+        if age > 0:
+            self.__age = age
+        else:
+            print("Age must be positive.")
+
+    # 🔶 ABSTRACTION: Force subclasses to implement this
+    @abstractmethod
+    def speak(self):
+        pass
+
+    def __str__(self):
+        return f"{self.__name} ({self.__breed}), Age: {self.__age}"
+
+# 🐄 INHERITANCE + POLYMORPHISM
+class Cow(Animal):
+    def speak(self):
+        return f"{self.get_name()} says Moo!"
+
+# 🐔 INHERITANCE + POLYMORPHISM
+class Chicken(Animal):
+    def speak(self):
+        return f"{self.get_name()} says Cluck!"
+
+# 🐑 INHERITANCE + POLYMORPHISM
+class Sheep(Animal):
+    def speak(self):
+        return f"{self.get_name()} says Baa!"
+
+# 🧠 Farm Manager
+class Farm:
+    def __init__(self):
+        self.animals = []
+
+    def add_animal(self, animal):
+        if isinstance(animal, Animal):
+            self.animals.append(animal)
+            print(f"{animal.get_name()} added to the farm.")
+        else:
+            print("Only animals can be added.")
+
+    def list_animals(self):
+        if not self.animals:
+            print("No animals on the farm.")
+            return
+        for animal in self.animals:
+            print(animal)
+            print(animal.speak())
+            print("-" * 30)
+
+    def find_animal(self, name):
+        for animal in self.animals:
+            if animal.get_name().lower() == name.lower():
+                return animal
+        return None
+
+    def update_age(self, name, new_age):
+        animal = self.find_animal(name)
+        if animal:
+            animal.set_age(new_age)
+            print(f"{name}'s age updated.")
+        else:
+            print(f"No animal named {name} found.")
+
+# 🔄 Main interaction
+def main():
+    farm = Farm()
+    
+    while True:
+        print("\n🐾 SMART FARM MENU")
+        print("1. Add Cow")
+        print("2. Add Chicken")
+        print("3. Add Sheep")
+        print("4. List all animals")
+        print("5. Update animal age")
+        print("6. Exit")
+        choice = input("Choose an option: ")
+
+        if choice == '1':
+            name = input("Name: ")
+            age = int(input("Age: "))
+            breed = input("Breed: ")
+            cow = Cow(name, age, breed)
+            farm.add_animal(cow)
+
+        elif choice == '2':
+            name = input("Name: ")
+            age = int(input("Age: "))
+            breed = input("Breed: ")
+            chicken = Chicken(name, age, breed)
+            farm.add_animal(chicken)
+
+        elif choice == '3':
+            name = input("Name: ")
+            age = int(input("Age: "))
+            breed = input("Breed: ")
+            sheep = Sheep(name, age, breed)
+            farm.add_animal(sheep)
+
+        elif choice == '4':
+            farm.list_animals()
+
+        elif choice == '5':
+            name = input("Enter animal name: ")
+            new_age = int(input("Enter new age: "))
+            farm.update_age(name, new_age)
+
+        elif choice == '6':
+            print("Exiting Smart Farm. 🐮🐔🐑")
+            break
+
+        else:
+            print("Invalid choice. Try again.")
+
+# Run the system
+main()
