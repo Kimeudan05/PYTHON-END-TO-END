@@ -1,0 +1,25 @@
+{
+    "books": [
+        {
+            "title": "The mighty warrior",
+            "author": "Masila",
+            "is_available": true
+        },
+        {
+            "title": "Juma the great",
+            "author": "Juma",
+            "is_available": true
+        },
+        {
+            "title": "kasongo",
+            "author": "kilo",
+            "is_available": false
+        }
+    ],
+    "borrowed_books": {
+        "kasongo": {
+            "user_id": "mas123",
+            "date": "2025-10-09 11:20:20"
+        }
+    }
+}

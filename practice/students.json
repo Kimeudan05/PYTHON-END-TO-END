@@ -1,0 +1,14 @@
+[
+  {
+    "name": "masila",
+    "age": 23,
+    "grade": "Twelveth",
+    "subjects": { "maths": 67.0, "history": 90.0, "math": 90.0 }
+  },
+  {
+    "name": "juma",
+    "age": 23,
+    "grade": "sixth",
+    "subjects": { "geography": 98.0, "maths": 89.0, "history": 89.0 }
+  }
+]
