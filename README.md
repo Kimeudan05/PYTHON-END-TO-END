@@ -3,3 +3,8 @@
 #### pip install jupyter ipykernel
 
 ##### python -m ipykernel install --user --name=virtual_env --display-name "Python (virtual_env)"
+
+- instaling tesseract
+  [tesse](https://github.com/UB-Mannheim/tesseract/wiki)
+
+python main.py images/puzzle.png
