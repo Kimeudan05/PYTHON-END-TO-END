@@ -3,3 +3,4 @@ virtual_env/
 __pycache__/
 certificate.json
 projects/olist_brazil_dataset/
+*.csv
