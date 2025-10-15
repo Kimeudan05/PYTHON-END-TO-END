@@ -9,6 +9,16 @@
       "name": "creating new",
       "database": "test",
       "username": "postgres"
+    },
+    {
+      "ssh": "Disabled",
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "driver": "PostgreSQL",
+      "name": "python_end",
+      "database": "olist_db",
+      "username": "postgres"
     }
   ]
 }
