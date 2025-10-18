@@ -4,3 +4,4 @@ __pycache__/
 certificate.json
 projects/olist_brazil_dataset/
 *.csv
+.vscode

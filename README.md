@@ -8,3 +8,7 @@
   [tesse](https://github.com/UB-Mannheim/tesseract/wiki)
 
 python main.py images/puzzle.png
+
+Delete **pychache**
+
+Get-ChildItem -Recurse -Directory -Filter '**pycache**' | Remove-Item -Recurse -Force
