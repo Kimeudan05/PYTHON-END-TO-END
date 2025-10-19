@@ -1,6 +1,5 @@
-from flask import Flask ,redirect,url_for,render_template,request,session,flash
+from flask import Flask ,redirect,url_for,render_template,request,session
 from datetime import timedelta
-
 
 #create an instance  and set some session data
 app = Flask(__name__)
@@ -21,12 +20,10 @@ def login():
         # get the data send from the form
         user = request.form["name"]
         session["user"]= user
-        flash("login successiful")
         return redirect(url_for("user"))
     else:
         # when you retry /login when logged in , you will be redirected to the /user
         if "user" in session:
-            flash("Already logged in")
             return redirect(url_for("user"))
         return render_template("login.html")
 
@@ -35,21 +32,20 @@ def login():
 def user():
     if "user" in session:
         user =session["user"]
-        return render_template("user.html",user=user)
+        return f"Welcome <h1>{user}</h1> to the site visit"
     else:
         #if not logged in and try /user you will be redirected to login
-        flash("you are not logged in. Login!!")
         return redirect(url_for("login"))
 
 # clear sessions
 @app.route("/logout")
 def logout():
-    # show message only if we had a user in session
-    if "user" in session:
-        user = session["user"]
     session.pop("user",None)
-    flash(f"You have been logged out {user}","info")
     return redirect(url_for("login"))
+
+@app.route("/kasongo")
+def kasongo():
+    return render_template("mukui.html")
 
 if __name__ == "__main__":
     app.debug = True
