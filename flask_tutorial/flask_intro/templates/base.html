@@ -15,23 +15,27 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand" href="/">SavvySolveTech</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link active" href="/">Home</a>
+                    <a class="nav-link active" href="/"><button class="btn btn-danger">Home</button></a>
                     <a class="nav-link" href="/login"><button class="btn btn-info">login</button></a>
-                    <a class="nav-link" href="/user">User</a>
+                    <a class="nav-link" href="/user"><button class="btn btn-danger">User</button></a>
+                    <a class="nav-link" href="/view"><button class="btn btn-danger">View users</button></a>
                     <a class="nav-link " href="/logout"><button class="btn btn-danger">logout</button></a>
                 </div>
             </div>
         </div>
     </nav>
-    {% block content %}
-    {% endblock %}
+    <div class="container-fluid">
+        {% block content %}
+        {% endblock %}
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script>

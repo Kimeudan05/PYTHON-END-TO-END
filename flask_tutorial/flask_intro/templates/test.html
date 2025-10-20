@@ -1,5 +1,32 @@
 {% extends "base.html" %}
 {% block title %} Homepage {% endblock %}
 {% block content %}
-<h1>Test</h1>
-{% endblock %}
+<!-- Main layout -->
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar pt-3">
+            <ul class="nav flex-column">
+                <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/view">Users</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Reports</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main content -->
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <h1 class="mt-4">Welcome to this Test Dashboard</h1>
+
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <div class="card text-white bg-primary mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Users</h5>
+                            <p class="card-text">125 Registered Users</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add more cards/stats -->
+            </div>
+        </main>
+        {% endblock %}
