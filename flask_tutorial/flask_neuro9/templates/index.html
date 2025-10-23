@@ -26,8 +26,29 @@
     <input type="submit" value="Upload">
 </form>
 
+<!-- images  -->
+<h4>Render an image</h4>
+<img src="/images/image.png" alt="image">
+
+<!-- sessions and cookies -->
+<!-- sessions -->
+<h3>Sessions and Cookies</h3>
+<p class="text-white fs-3 bg-danger p-2 ">{{message}}</p>
+<a href="{{url_for('set_data')}}">set session</a><br>
+<a href="{{url_for('get_data')}}">get session</a><br>
+<a href="{{url_for('clear_session')}}">clear session</a><br>
+<a href="{{url_for('clear_one')}}">clear other</a><br>
+
+<!-- cookies -->
+<a href="{{url_for('set_cookie')}}">set cookie</a><br>
+<a href="{{url_for('get_cookie')}}">get cookie</a><br>
+<a href="{{url_for('remove_cookie')}}">remove cookie</a><br>
+<a href="{{url_for('show_cookies')}}">All cookies</a><br>
+
+
 <h3>Javascript Json request</h3>
-<button id="postbtn">send POST request</button>
+<button id="postbtn" class="btn btn-info text-danger fw-bold">send POST request</button>
+
 <script type="text/javascript">
     const postButton = document.getElementById('postbtn')
     const jsondata = { name: "masila", greeting: "Hello" }
@@ -35,7 +56,7 @@
         fetch("{{url_for('handle_post')}}", {
             method: "POST",
             headers: {
-                'Content-Type': 'application/json;charset="utf-8'
+                'Content-Type': 'application/json;charset=utf-8'
             },
             body: JSON.stringify(jsondata)
         }).then(response => response.json())
