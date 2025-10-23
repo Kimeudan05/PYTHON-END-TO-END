@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block title %}Index {% endblock %}
+{% block content %}
+<h1>Index page</h1>
+<ul>
+    <h3>All people in our database</h3>
+    <!-- render all people -->
+    {% for person in people %}
+    <li>
+        {{loop.index}}. {{person}}
+        <button onclick="deletePerson('{{person._id}}')">Delete</button>
+        <a href="{{url_for('details',pid = person._id)}}">Details</a>
+    </li>
+    {% endfor %}
+
+    <!-- flash messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div class="container mt-3">
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+
+
+    <!-- A form to  add a new person  -->
+
+    <form action="{{ url_for('index') }}" method="post" class="w-75  mt-5">
+        <h3>New person</h3>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingName" name="name" placeholder="Enter name" required>
+            <label for="floatingName">Name</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="number" class="form-control" id="floatingAge" name="age" placeholder="Enter age">
+            <label for="floatingAge">Age</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingJob" name="job" placeholder="Enter job">
+            <label for="floatingJob">Job</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Submit</button>
+    </form>
+
+</ul>
+
+<script type="text/javascript">
+    const deletebtn = document.getElementById('deletebtn')
+    const deletePerson = (id) => {
+        if (confirm("Are you sure you want to delete this person?")) {
+            fetch(`/delete/${id}`, { method: "DELETE" })
+                .then((res) => {
+                    if (res.ok) {
+                        window.location.reload()
+                    } else {
+                        console.error("problem deleting")
+                    }
+                }).catch((err) => {
+                    console.err("Error :", err)
+                })
+        }
+    }
+</script>
+{% endblock %}
