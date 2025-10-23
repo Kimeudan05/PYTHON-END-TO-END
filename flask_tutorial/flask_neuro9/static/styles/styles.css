@@ -1,0 +1,9 @@
+body {
+  color: rgb(24, 30, 23);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 2rem;
+}
+img {
+  width: 600px;
+  height: 200px;
+}
